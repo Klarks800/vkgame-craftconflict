@@ -69,7 +69,7 @@
 
 function FromUnityToJs ()   // функция вызывается из Unity
         {
-        callMethodWallPost();
+          ad();
         }
 
         function callMethodWallPost() // вызываем метод ВК
@@ -88,6 +88,20 @@ function FromUnityToJs ()   // функция вызывается из Unity
             myGameInstance.SendMessage('ConnectJs', 'ResponseError');
           });
 
+        }
+
+        function ad() // вызываем метод ВК
+        {
+          vkBridge.send('VKWebAppShowNativeAds', {
+            ad_format: 'interstitial'
+          })
+          .then( (data) => { 
+            if (data.result) {
+              myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
+            } else {
+              myGameInstance.SendMessage('ConnectJs', 'ResponseError');
+            } 
+           }) .catch((error) => { console.log(error); });
         }
 
         jQuery(document).ready(function($) // страница прогружена
