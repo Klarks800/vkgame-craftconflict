@@ -80,12 +80,12 @@ function FromUnityToJs ()   // функция вызывается из Unity
           .then((data) => {
             if (data.post_id) {
               console.log ("ok"); // Запись размещена
-              myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
+              myGameInstance.SendMessage('ConnectJS', 'ResponseOk');
             }
           })
           .catch((error) => {
             console.log(error); // Ошибка
-            myGameInstance.SendMessage('ConnectJs', 'ResponseError');
+            myGameInstance.SendMessage('ConnectJS', 'ResponseError');
           });
 
         }
@@ -97,9 +97,9 @@ function FromUnityToJs ()   // функция вызывается из Unity
           })
           .then( (data) => { 
             if (data.result) {
-              myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
+              myGameInstance.SendMessage('ConnectJS', 'AdClosed');
             } else {
-              myGameInstance.SendMessage('ConnectJs', 'ResponseError');
+              myGameInstance.SendMessage('ConnectJS', 'ResponseError');
             } 
            }) .catch((error) => { console.log(error); });
         }
