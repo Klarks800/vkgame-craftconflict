@@ -70,10 +70,7 @@
         return false;
     }());
 
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
-        config.devicePixelRatio = 1;
-    }
+
 
     var backgroundUnity = "url('" + buildUrl + "/') center / cover";
     canvas.style.background = "url('background.png') center / cover";
@@ -94,11 +91,8 @@
             progressBarFull.style.width = `${100 * progress}%`;
           
         }).then((unityInstance) => {
-          myGameInstance = unityInstance;
-          loadingCover.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
+            myGameInstance = unityInstance;
+            loadingCover.style.display = "none";
         }).catch((message) => {
           alert(message);
         });
