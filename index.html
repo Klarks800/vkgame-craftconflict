@@ -37,11 +37,11 @@
 <script>
     const hideFullScreenButton = "";
     const buildUrl = "Build";
-    const loaderUrl = buildUrl + "/game.loader.js";
+    const loaderUrl = buildUrl + "/vkgame-craftconflict.loader.js";
     const config = {
-        dataUrl: buildUrl + "/game.data.unityweb",
-        frameworkUrl: buildUrl + "/game.framework.js.unityweb",
-        codeUrl: buildUrl + "/game.wasm.unityweb",
+        dataUrl: buildUrl + "/vkgame-craftconflict.data.unityweb",
+        frameworkUrl: buildUrl + "/vkgame-craftconflict.framework.js.unityweb",
+        codeUrl: buildUrl + "/vkgame-craftconflict.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "New Unity Projectcraft_platformer",
@@ -54,23 +54,6 @@
     const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
     const progressBarFull = document.querySelector("#unity-progress-bar-full");
     const spinner = document.querySelector('.spinner');
-
-    const canFullscreen = (function () {
-        for (const key of [
-            'exitFullscreen',
-            'webkitExitFullscreen',
-            'webkitCancelFullScreen',
-            'mozCancelFullScreen',
-            'msExitFullscreen',
-        ]) {
-            if (key in document) {
-                return true;
-            }
-        }
-        return false;
-    }());
-
-
 
     var backgroundUnity = "url('" + buildUrl + "/') center / cover";
     canvas.style.background = "url('background.png') center / cover";
