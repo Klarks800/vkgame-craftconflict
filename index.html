@@ -63,94 +63,13 @@
     canvas.addEventListener("touchstart", () => { window.focus() });
     canvas.addEventListener("pointerdown", () => { window.focus() }); 
 
-    var myGameInstance = null; 
-      var script = document.createElement("script");
-      script.src = loaderUrl;
 
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-            spinner.style.display = "none";
-            progressBarEmpty.style.display = "";
-            progressBarFull.style.width = `${100 * progress}%`;
-          
-        }).then((unityInstance) => {
-            myGameInstance = unityInstance;
-            loadingCover.style.display = "none";
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-
-    document.body.appendChild(script);
 </script>
 <script>
 
 
 
 
-            function Post() // вызываем метод ВК
-            {
-            vkBridge.send('VKWebAppShowWallPostBox', {
-              message: 'Первая запись на стене!'
-              })
-              .then((data) => {
-                if (data.post_id) {
-                  console.log ("ok"); // Запись размещена
-                  myGameInstance.SendMessage('ConnectJS', 'ResponseOk');
-                }
-              })
-              .catch((error) => {
-                console.log(error); // Ошибка
-                myGameInstance.SendMessage('ConnectJS', 'ResponseError');
-              });
-    
-            }
-    
-            function ShowAd() // вызываем метод ВК
-            {
-              vkBridge.send('VKWebAppShowNativeAds', {
-                ad_format: 'interstitial'
-              })
-              .then( (data) => { 
-                if (data.result) {
-                  myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
-                } else {
-                  myGameInstance.SendMessage('ConnectJS', 'ResponseError');
-                } 
-               }) .catch((error) => { console.log(error); });
-            }
-    
-   
-    
-            function Invite() // вызываем метод ВК
-            {
-            vkBridge.send('VKWebAppShowInviteBox')
-              .then((data) => {
-                if (data.success) {
-                 
-                }
-              })
-              .catch((error) => {
-                console.log(error); // Ошибка
-              
-              });
-    
-            }
-
-            function Fav() // вызываем метод ВК
-            {
-            vkBridge.send('VKWebAppAddToFavorites')
-              .then((data) => {
-                if (data.result) {
-                 
-                }
-              })
-              .catch((error) => {
-                console.log(error); // Ошибка
-              
-              });
-    
-            }
     
             jQuery(document).ready(function($) // страница прогружена
         {
