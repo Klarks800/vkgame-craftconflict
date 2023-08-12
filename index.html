@@ -108,7 +108,7 @@ function FromUnityToJs ()   // функция вызывается из Unity
         function banner() // вызываем метод ВК
         {
           vkBridge.send('VKWebAppShowBannerAd', {
-            ad_format: 'bottom'
+            banner_location: 'bottom'
           })
           .then( (data) => { 
             if (data.result) {
