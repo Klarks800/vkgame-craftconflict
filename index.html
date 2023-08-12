@@ -65,5 +65,37 @@
       };
       document.body.appendChild(script);
     </script>
+       <script>
+
+function FromUnityToJs ()   // функция вызывается из Unity
+        {
+        callMethodWallPost();
+        }
+
+        function callMethodWallPost() // вызываем метод ВК
+        {
+        vkBridge.send('VKWebAppShowWallPostBox', {
+          message: 'Первая запись на стене!'
+          })
+          .then((data) => {
+            if (data.post_id) {
+              console.log ("ok"); // Запись размещена
+              myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
+            }
+          })
+          .catch((error) => {
+            console.log(error); // Ошибка
+            myGameInstance.SendMessage('ConnectJs', 'ResponseError');
+          });
+
+        }
+
+        jQuery(document).ready(function($) // страница прогружена
+        {
+            vkBridge.send('VKWebAppInit'); // Инициализация ВК
+        });
+
+
+       </script>
   </body>
 </html>
