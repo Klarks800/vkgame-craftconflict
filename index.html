@@ -85,13 +85,8 @@
 </script>
 <script>
 
-    function FromUnityToJs ()   // функция вызывается из Unity
-            {
-              banner();
-              ban();
-            }
-    
-            function callMethodWallPost() // вызываем метод ВК
+
+            function Post() // вызываем метод ВК
             {
             vkBridge.send('VKWebAppShowWallPostBox', {
               message: 'Первая запись на стене!'
@@ -109,7 +104,7 @@
     
             }
     
-            function ad() // вызываем метод ВК
+            function ShowAd() // вызываем метод ВК
             {
               vkBridge.send('VKWebAppShowNativeAds', {
                 ad_format: 'interstitial'
