@@ -151,6 +151,48 @@
               });
     
             }
+
+            function ShowRewardedAd()
+{
+  // Показать рекламу
+  bridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
+    .then((data) => {
+      if (data.result) // Успех
+      myGameInstance.SendMessage('ConnectJS', 'Reward');
+      else // Ошибка 
+        console.log('Ошибка при показе');
+    })
+    .catch((error) => { console.log(error); /* Ошибка */ });
+}
+
+function Banner() // вызываем метод ВК
+            {
+              vkBridge.send('VKWebAppShowNativeAds', {
+                ad_format: 'interstitial'
+              });
+              
+
+              vkBridge.send('VKWebAppShowNativeAds', {
+                ad_format: 'reward'
+              }) .then((data) => {
+                   if (data.result) {
+                    myGameInstance.SendMessage('ConnectJS', 'AdActive');
+                  } else {
+                console.log('Рекламные материалы не найдены.');
+      }
+  })
+  .catch((error) => { console.log(error); /* Ошибка */  });
+
+
+              vkBridge.send('VKWebAppShowBannerAd', {
+                banner_location: 'bottom'
+              })
+              .then( (data) => { 
+                if (data.result) {
+                  myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
+                } 
+               }) .catch((error) => { console.log(error); });
+            }
     
             jQuery(document).ready(function($) // страница прогружена
         {
