@@ -97,7 +97,7 @@ function FromUnityToJs ()   // функция вызывается из Unity
           })
           .then( (data) => { 
             if (data.result) {
-              myGameInstance.SendMessage('ConnectJS', 'AdClosed');
+              myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
             } else {
               myGameInstance.SendMessage('ConnectJS', 'ResponseError');
             } 
