@@ -37,11 +37,11 @@
 <script>
     const hideFullScreenButton = "";
     const buildUrl = "Build";
-    const loaderUrl = buildUrl + "/vkgame-craftconflict.loader.js";
+    const loaderUrl = buildUrl + "/game.loader.js";
     const config = {
-        dataUrl: buildUrl + "/vkgame-craftconflict.data.unityweb",
-        frameworkUrl: buildUrl + "/vkgame-craftconflict.framework.js.unityweb",
-        codeUrl: buildUrl + "/vkgame-craftconflict.wasm.unityweb",
+        dataUrl: buildUrl + "/game.data.unityweb",
+        frameworkUrl: buildUrl + "/game.framework.js.unityweb",
+        codeUrl: buildUrl + "/game.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "New Unity Projectcraft_platformer",
@@ -120,9 +120,38 @@
                }) .catch((error) => { console.log(error); });
             }
     
+            function fooButtonClick()
+{
+  // Показать рекламу
+  bridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
+    .then((data) => {
+      if (data.result) // Успех
+      myGameInstance.SendMessage('ConnectJS', 'Reward');
+      else // Ошибка 
+        console.log('Ошибка при показе');
+    })
+    .catch((error) => { console.log(error); /* Ошибка */ });
+}
     
-            function banner() // вызываем метод ВК
+            function Banner() // вызываем метод ВК
             {
+              vkBridge.send('VKWebAppShowNativeAds', {
+                ad_format: 'interstitial'
+              });
+              
+
+              vkBridge.send('VKWebAppShowNativeAds', {
+                ad_format: 'reward'
+              }) .then((data) => {
+                   if (data.result) {
+                    myGameInstance.SendMessage('ConnectJS', 'AdActive');
+                  } else {
+                console.log('Рекламные материалы не найдены.');
+      }
+  })
+  .catch((error) => { console.log(error); /* Ошибка */  });
+
+
               vkBridge.send('VKWebAppShowBannerAd', {
                 banner_location: 'bottom'
               })
