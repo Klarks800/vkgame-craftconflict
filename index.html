@@ -88,6 +88,69 @@
 
 
 
+            function Post() // вызываем метод ВК
+            {
+            vkBridge.send('VKWebAppShowWallPostBox', {
+              message: 'Первая запись на стене!'
+              })
+              .then((data) => {
+                if (data.post_id) {
+                  console.log ("ok"); // Запись размещена
+                  myGameInstance.SendMessage('ConnectJS', 'ResponseOk');
+                }
+              })
+              .catch((error) => {
+                console.log(error); // Ошибка
+                myGameInstance.SendMessage('ConnectJS', 'ResponseError');
+              });
+    
+            }
+    
+            function ShowAd() // вызываем метод ВК
+            {
+              vkBridge.send('VKWebAppShowNativeAds', {
+                ad_format: 'interstitial'
+              })
+              .then( (data) => { 
+                if (data.result) {
+                  myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
+                } else {
+                  myGameInstance.SendMessage('ConnectJS', 'ResponseError');
+                } 
+               }) .catch((error) => { console.log(error); });
+            }
+    
+   
+    
+            function Invite() // вызываем метод ВК
+            {
+            vkBridge.send('VKWebAppShowInviteBox')
+              .then((data) => {
+                if (data.success) {
+                 
+                }
+              })
+              .catch((error) => {
+                console.log(error); // Ошибка
+              
+              });
+    
+            }
+
+            function Fav() // вызываем метод ВК
+            {
+            vkBridge.send('VKWebAppAddToFavorites')
+              .then((data) => {
+                if (data.result) {
+                 
+                }
+              })
+              .catch((error) => {
+                console.log(error); // Ошибка
+              
+              });
+    
+            }
     
             jQuery(document).ready(function($) // страница прогружена
         {
