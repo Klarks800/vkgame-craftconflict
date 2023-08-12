@@ -63,8 +63,36 @@
     canvas.addEventListener("touchstart", () => { window.focus() });
     canvas.addEventListener("pointerdown", () => { window.focus() }); 
 
+    var myGameInstance = null; 
+      var script = document.createElement("script");
+      script.src = loaderUrl;
 
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+            spinner.style.display = "none";
+            progressBarEmpty.style.display = "";
+            progressBarFull.style.width = `${100 * progress}%`;
+          
+        }).then((unityInstance) => {
+            myGameInstance = unityInstance;
+            loadingCover.style.display = "none";
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+
+    document.body.appendChild(script);
 </script>
+<script>
 
+
+
+
+    
+            jQuery(document).ready(function($) // страница прогружена
+        {
+            vkBridge.send('VKWebAppInit'); // Инициализация ВК
+        });
+           </script>
 </body>
 </html>
