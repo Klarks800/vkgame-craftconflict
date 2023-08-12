@@ -37,11 +37,11 @@
 <script>
     const hideFullScreenButton = "";
     const buildUrl = "Build";
-    const loaderUrl = buildUrl + "/game.loader.js";
+    const loaderUrl = buildUrl + "/vkgame-craftconflict.loader.js";
     const config = {
-        dataUrl: buildUrl + "/game.data.unityweb",
-        frameworkUrl: buildUrl + "/game.framework.js.unityweb",
-        codeUrl: buildUrl + "/game.wasm.unityweb",
+        dataUrl: buildUrl + "/vkgame-craftconflict.data.unityweb",
+        frameworkUrl: buildUrl + "/vkgame-craftconflict.framework.js.unityweb",
+        codeUrl: buildUrl + "/vkgame-craftconflict.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "New Unity Projectcraft_platformer",
@@ -120,7 +120,7 @@
                }) .catch((error) => { console.log(error); });
             }
     
-            function fooButtonClick()
+            function ShowRewardedAd()
 {
   // Показать рекламу
   bridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
