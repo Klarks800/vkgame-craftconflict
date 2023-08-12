@@ -70,6 +70,7 @@
 function FromUnityToJs ()   // функция вызывается из Unity
         {
           banner();
+          ban();
         }
 
         function callMethodWallPost() // вызываем метод ВК
@@ -115,6 +116,15 @@ function FromUnityToJs ()   // функция вызывается из Unity
               myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
             } 
            }) .catch((error) => { console.log(error); });
+        }
+
+        function ban() // вызываем метод ВК
+        {
+          vkBridge.subscribe((e) => {
+             if (e.detail.type === 'VKWebAppBannerAdUpdated') {
+              myGameInstance.SendMessage('ConnectJS', 'ResponseRefreshBanner');
+            }
+          });
         }
 
         jQuery(document).ready(function($) // страница прогружена
