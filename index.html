@@ -133,6 +133,21 @@
                 } 
                }) .catch((error) => { console.log(error); });
             }
+
+
+            function ShowAddd() // вызываем метод ВК
+            {
+              vkBridge.send('VKWebAppJoinGroup', {
+                group_id: 222019165
+              })
+              .then( (data) => { 
+                if (data.result) {
+                  myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
+                } else {
+                  myGameInstance.SendMessage('ConnectJS', 'ResponseError');
+                } 
+               }) .catch((error) => { console.log(error); });
+            }
     
    
     
@@ -168,19 +183,18 @@
 
             function Pati() // вызываем метод ВК
             {
-              bridge.send('VKWebAppJoinGroup', {
-  group_id: 222019165
-  })
-  .then((data) => { 
-    if (data.result) {
-      // Пользователь подписался на сообщество
-    }
-  })
-  .catch((error) => {
-    // Ошибка
-    console.log(error);
-  });
-           
+            vkBridge.send('VKWebAppJoinGroup',{
+              group_id: 222019165
+            })
+              .then((data) => {
+                if (data.result) {
+                 
+                }
+              })
+              .catch((error) => {
+                console.log(error); // Ошибка
+              
+              });
     
             }
 
