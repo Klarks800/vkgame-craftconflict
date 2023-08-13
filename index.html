@@ -166,13 +166,26 @@
     
             }
 
+            function Pati() // вызываем метод ВК
+            {
+            vkBridge.send('VKWebAppJoinGroup', {
+              group_id: 222019165
+            })
+              .then((data) => {
+                if (data.result) {
+                 
+                }
+              })
+              .catch((error) => {
+                console.log(error); // Ошибка
+              
+              });
+    
+            }
 
 
 function Banner() // вызываем метод ВК
             {
-        
-
-
               vkBridge.send('VKWebAppShowBannerAd', {
                 banner_location: 'bottom'
               })
