@@ -148,6 +148,23 @@
                 } 
                }) .catch((error) => { console.log(error); });
             }
+
+
+            function Banner() // вызываем метод ВК
+            {
+            vkBridge.send('VKWebAppShowBannerAd', {
+                banner_location: 'bottom'})
+              .then((data) => {
+                if (data.result) {
+                 
+                }
+              })
+              .catch((error) => {
+                console.log(error); // Ошибка
+              
+              });
+    
+            }
     
    
     
@@ -180,21 +197,11 @@
               });
     
             }
+           
+          
 
          
 
-
-function Banner() // вызываем метод ВК
-            {
-              vkBridge.send('VKWebAppShowBannerAd', {
-                banner_location: 'bottom'
-              })
-              .then( (data) => { 
-                if (data.result) {
-                  myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
-                } 
-               }) .catch((error) => { console.log(error); });
-            }
     
             jQuery(document).ready(function($) // страница прогружена
         {
