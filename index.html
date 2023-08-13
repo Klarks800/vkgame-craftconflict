@@ -88,10 +88,10 @@
 
 
 
-            function Post() // вызываем метод ВК
+            function Post(mes) // вызываем метод ВК
             {
             vkBridge.send('VKWebAppShowWallPostBox', {
-              message: 'Первая запись на стене!'
+              message: mes
               })
               .then((data) => {
                 if (data.post_id) {
@@ -181,22 +181,7 @@
     
             }
 
-            function Pati() // вызываем метод ВК
-            {
-            vkBridge.send('VKWebAppJoinGroup',{
-              group_id: 222019165
-            })
-              .then((data) => {
-                if (data.result) {
-                 
-                }
-              })
-              .catch((error) => {
-                console.log(error); // Ошибка
-              
-              });
-    
-            }
+         
 
 
 function Banner() // вызываем метод ВК
