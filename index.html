@@ -113,6 +113,20 @@
               })
               .then( (data) => { 
                 if (data.result) {
+                  myGameInstance.SendMessage('ConnectJS', 'Reward');
+                } else {
+                  myGameInstance.SendMessage('ConnectJS', 'ResponseError');
+                } 
+               }) .catch((error) => { console.log(error); });
+            }
+
+            function ShowAdd() // вызываем метод ВК
+            {
+              vkBridge.send('VKWebAppShowNativeAds', {
+                ad_format: 'interstitial'
+              })
+              .then( (data) => { 
+                if (data.result) {
                   myGameInstance.SendMessage('ConnectJS', 'ResponseAd');
                 } else {
                   myGameInstance.SendMessage('ConnectJS', 'ResponseError');
